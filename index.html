@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shehar Bano — IT Professional & AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-outer" id="cursorOuter"></div>
+  <div class="cursor-inner" id="cursorInner"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-glitch" data-text="SHEHAR BANO">SHEHAR BANO</div>
+    <div class="loader-sub">// Booting system...</div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar-fill" id="loaderBar"></div>
+    </div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Background -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="nl-bracket">[</span>SB<span class="nl-bracket">]</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about"><span class="nav-num">01.</span>About</a></li>
+      <li><a href="#skills"><span class="nav-num">02.</span>Skills</a></li>
+      <li><a href="#experience"><span class="nav-num">03.</span>Experience</a></li>
+      <li><a href="#projects"><span class="nav-num">04.</span>Projects</a></li>
+      <li><a href="#contact"><span class="nav-num">05.</span>Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="theme-toggle" aria-label="Toggle theme"><span class="theme-icon">☀</span></button>
+      <button class="nav-hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about" class="mob-link">01. About</a>
+    <a href="#skills" class="mob-link">02. Skills</a>
+    <a href="#experience" class="mob-link">03. Experience</a>
+    <a href="#projects" class="mob-link">04. Projects</a>
+    <a href="#contact" class="mob-link">05. Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg-text">ENGINEER</div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        <span>IT Professional &amp; AI Engineer</span>
+        <span class="eyebrow-dot"></span>
+        <span>Lahore, PK</span>
+        <span class="eyebrow-line"></span>
+      </div>
+      <h1 class="hero-name">
+        <span class="hn-first">Shehar</span>
+        <span class="hn-last">Bano</span>
+      </h1>
+      <div class="hero-typed-wrap">
+        <span class="typed-prefix">&gt;&gt; </span>
+        <span id="typed-text"></span>
+        <span class="cursor">█</span>
+      </div>
+      <p class="hero-desc">
+        Motivated IT professional with a <span class="highlight-text">perfect 4.0/4.0 CGPA</span>, crafting high-impact
+        solutions across
+        <span class="highlight-text">AI</span>, <span class="highlight-text">Cloud</span>, <span
+          class="highlight-text">IoT</span>,
+        <span class="highlight-text">Cybersecurity</span>, and <span class="highlight-text">Full-Stack
+          Development</span>.
+        I don't just write code — I architect systems that scale, secure, and perform.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">
+          <span class="btn-glitch" data-text="Explore Work">Explore Work</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="#contact" class="btn-ghost">Say Hello</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat">
+          <div class="hstat-num" data-target="40">0</div>
+          <div class="hstat-lbl">CGPA / 4.0</div>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <div class="hstat-num" data-target="8">0</div>
+          <div class="hstat-lbl">Major Projects</div>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <div class="hstat-num" data-target="6">0</div>
+          <div class="hstat-lbl">Certifications</div>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <div class="hstat-num" data-target="10">0</div>
+          <div class="hstat-lbl">Tech Domains</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="tech-stack-ring" id="techRing">
+        <div class="ring-center">
+          <div class="rc-label">STACK</div>
+          <div class="rc-count" id="stackCount">0</div>
+          <div class="rc-sub">Technologies</div>
+        </div>
+        <!-- Tech items injected by JS -->
+      </div>
+      <div class="ring-info-panel" id="ringInfoPanel">
+        <div class="rip-title" id="ripTitle">Hover a tech</div>
+        <div class="rip-desc" id="ripDesc">to see details</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-label">// 01. about</div>
+      <h2 class="section-title reveal">Who I<br><span class="title-stroke">Actually Am</span></h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a <strong>6th semester Information Engineering Technology</strong> student at the University of Lahore
+            with a <strong>perfect 4.0/4.0 CGPA</strong>. But grades are just numbers — what defines me is the obsession
+            with building things that actually work at scale.</p>
+          <p>My expertise spans <strong>Web Development, Cloud Computing, AI, IoT, Cybersecurity, Embedded
+              Systems,</strong> and <strong>Mobile Development</strong>. Whether it's deploying a CI/CD pipeline on AWS,
+            training a computer vision model, or programming an ESP32 from scratch — I've done it, and I've documented
+            every failure along the way.</p>
+          <p>Known for curiosity, disciplined problem-solving, and a commitment to continuous growth. I deliver
+            solutions with emphasis on <strong>automation, scalability, security, and performance optimization</strong>.
+            Not just features — systems.</p>
+        </div>
+        <div class="about-right">
+          <div class="cert-grid reveal">
+            <div class="cert-item ci1">
+              <div class="cert-icon">🤖</div>
+              <div class="cert-name">Generative AI</div>
+              <div class="cert-year">2023</div>
+            </div>
+            <div class="cert-item ci2">
+              <div class="cert-icon">☁</div>
+              <div class="cert-name">AWS Cloud Practitioner</div>
+              <div class="cert-year">2024</div>
+            </div>
+            <div class="cert-item ci3">
+              <div class="cert-icon">🌐</div>
+              <div class="cert-name">Cisco NetAcad</div>
+              <div class="cert-year">2024</div>
+            </div>
+            <div class="cert-item ci4">
+              <div class="cert-icon">💡</div>
+              <div class="cert-name">AI Connect Seminar</div>
+              <div class="cert-year">Dec 2025</div>
+            </div>
+            <div class="cert-item ci5">
+              <div class="cert-icon">🖥</div>
+              <div class="cert-name">WordPress Dev</div>
+              <div class="cert-year">Jul–Oct 2024</div>
+            </div>
+            <div class="cert-item ci6">
+              <div class="cert-icon">💼</div>
+              <div class="cert-name">Freelancing Essentials</div>
+              <div class="cert-year">Jul–Oct 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <section id="my" class="new">
+    <div class="about-terminal reveal">
+      <div class="at-bar">
+        <span class="at-dot red"></span>
+        <span class="at-dot yellow"></span>
+        <span class="at-dot green"></span>
+        <span class="at-title">shehar@lahore:~$</span>
+      </div>
+      <div class="at-body">
+        <div class="at-line"><span class="at-cmd">cat</span> profile.json</div>
+        <div class="at-output">{</div>
+        <div class="at-output">&nbsp;&nbsp;"name": <span class="at-str">"Shehar Bano"</span>,</div>
+        <div class="at-output">&nbsp;&nbsp;"role": <span class="at-str">"IT Professional & AI Engineer"</span>,</div>
+        <div class="at-output">&nbsp;&nbsp;"cgpa": <span class="at-num">4.0</span>,</div>
+        <div class="at-output">&nbsp;&nbsp;"university": <span class="at-str">"University of Lahore"</span>,</div>
+        <div class="at-output">&nbsp;&nbsp;"semester": <span class="at-str">"6th (Ongoing 2023-2027)"</span>,</div>
+        <div class="at-output">&nbsp;&nbsp;"location": <span class="at-str">"Lahore, Pakistan"</span>,</div>
+        <div class="at-output">&nbsp;&nbsp;"email": <span class="at-str">"shehar.bano.2130@gmail.com"</span>,</div>
+        <div class="at-output">&nbsp;&nbsp;"status": <span class="at-green">"open_to_opportunities"</span>,</div>
+        <div class="at-output">&nbsp;&nbsp;"domains": <span class="at-num">10</span></div>
+        <div class="at-output">}</div>
+        <div class="at-line at-blink-line"><span class="at-cursor">█</span></div>
+      </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-label">// 02. skills</div>
+      <h2 class="section-title reveal">Technical<br><span class="title-stroke">Arsenal</span></h2>
+
+      <div class="skills-tabs reveal" id="skillsTabs">
+        <button class="stab active" data-tab="web">Web Dev</button>
+        <button class="stab" data-tab="cloud">Cloud</button>
+        <button class="stab" data-tab="ai">AI / ML</button>
+        <button class="stab" data-tab="iot">IoT</button>
+        <button class="stab" data-tab="cyber">Cyber</button>
+        <button class="stab" data-tab="mobile">Mobile</button>
+      </div>
+
+      <div class="skills-content reveal" id="skillsContent">
+        <div class="skill-panel active" data-panel="web">
+          <div class="sp-pills">
+            <span class="pill" data-lvl="95">HTML5</span>
+            <span class="pill" data-lvl="92">CSS3</span>
+            <span class="pill" data-lvl="88">JavaScript</span>
+            <span class="pill" data-lvl="85">React</span>
+            <span class="pill" data-lvl="82">Node.js</span>
+            <span class="pill" data-lvl="78">Flask</span>
+            <span class="pill" data-lvl="75">PHP</span>
+            <span class="pill" data-lvl="80">REST APIs</span>
+            <span class="pill" data-lvl="70">Glassmorphism UI</span>
+          </div>
+          <div class="sp-bars">
+            <div class="spb-item"><span>Frontend (HTML/CSS/JS)</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="95"></div>
+              </div><span class="spb-pct">95%</span>
+            </div>
+            <div class="spb-item"><span>React & Node.js</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="85"></div>
+              </div><span class="spb-pct">85%</span>
+            </div>
+            <div class="spb-item"><span>Backend (Flask/PHP)</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="78"></div>
+              </div><span class="spb-pct">78%</span>
+            </div>
+            <div class="spb-item"><span>API Design & Integration</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="82"></div>
+              </div><span class="spb-pct">82%</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-panel" data-panel="cloud">
+          <div class="sp-pills">
+            <span class="pill" data-lvl="88">AWS EC2/S3/IAM</span>
+            <span class="pill" data-lvl="85">Docker</span>
+            <span class="pill" data-lvl="82">Jenkins</span>
+            <span class="pill" data-lvl="80">Kubernetes</span>
+            <span class="pill" data-lvl="90">Linux / Ubuntu</span>
+            <span class="pill" data-lvl="88">CI/CD Pipelines</span>
+            <span class="pill" data-lvl="78">SonarQube</span>
+            <span class="pill" data-lvl="75">SSH / Networking</span>
+          </div>
+          <div class="sp-bars">
+            <div class="spb-item"><span>AWS Cloud Services</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="88"></div>
+              </div><span class="spb-pct">88%</span>
+            </div>
+            <div class="spb-item"><span>Docker & Kubernetes</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="83"></div>
+              </div><span class="spb-pct">83%</span>
+            </div>
+            <div class="spb-item"><span>CI/CD (Jenkins)</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="85"></div>
+              </div><span class="spb-pct">85%</span>
+            </div>
+            <div class="spb-item"><span>Linux Administration</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="90"></div>
+              </div><span class="spb-pct">90%</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-panel" data-panel="ai">
+          <div class="sp-pills">
+            <span class="pill" data-lvl="88">Computer Vision</span>
+            <span class="pill" data-lvl="82">NLP</span>
+            <span class="pill" data-lvl="80">Speech Recognition</span>
+            <span class="pill" data-lvl="85">ML / DL</span>
+            <span class="pill" data-lvl="78">Generative AI</span>
+            <span class="pill" data-lvl="75">TensorFlow / PyTorch</span>
+            <span class="pill" data-lvl="80">OpenCV</span>
+          </div>
+          <div class="sp-bars">
+            <div class="spb-item"><span>Computer Vision</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="88"></div>
+              </div><span class="spb-pct">88%</span>
+            </div>
+            <div class="spb-item"><span>ML / Deep Learning</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="82"></div>
+              </div><span class="spb-pct">82%</span>
+            </div>
+            <div class="spb-item"><span>NLP & Speech AI</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="80"></div>
+              </div><span class="spb-pct">80%</span>
+            </div>
+            <div class="spb-item"><span>Generative AI Models</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="78"></div>
+              </div><span class="spb-pct">78%</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-panel" data-panel="iot">
+          <div class="sp-pills">
+            <span class="pill" data-lvl="88">Arduino Uno</span>
+            <span class="pill" data-lvl="85">ESP32</span>
+            <span class="pill" data-lvl="90">C / C++</span>
+            <span class="pill" data-lvl="80">Sensor Integration</span>
+            <span class="pill" data-lvl="78">Real-Time Automation</span>
+            <span class="pill" data-lvl="75">Bluetooth / IR</span>
+            <span class="pill" data-lvl="72">Bare-Metal Programming</span>
+          </div>
+          <div class="sp-bars">
+            <div class="spb-item"><span>Arduino / ESP32</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="88"></div>
+              </div><span class="spb-pct">88%</span>
+            </div>
+            <div class="spb-item"><span>C / C++ (Bare-Metal)</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="82"></div>
+              </div><span class="spb-pct">82%</span>
+            </div>
+            <div class="spb-item"><span>Sensor Systems</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="80"></div>
+              </div><span class="spb-pct">80%</span>
+            </div>
+            <div class="spb-item"><span>Real-Time Control</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="78"></div>
+              </div><span class="spb-pct">78%</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-panel" data-panel="cyber">
+          <div class="sp-pills">
+            <span class="pill" data-lvl="80">Vulnerability Assessment</span>
+            <span class="pill" data-lvl="78">OSINT</span>
+            <span class="pill" data-lvl="82">Web Security</span>
+            <span class="pill" data-lvl="75">Ethical Hacking</span>
+            <span class="pill" data-lvl="78">Network Security</span>
+            <span class="pill" data-lvl="70">Pen Testing Basics</span>
+          </div>
+          <div class="sp-bars">
+            <div class="spb-item"><span>Web Security</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="82"></div>
+              </div><span class="spb-pct">82%</span>
+            </div>
+            <div class="spb-item"><span>OSINT & Recon</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="78"></div>
+              </div><span class="spb-pct">78%</span>
+            </div>
+            <div class="spb-item"><span>Vulnerability Assessment</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="80"></div>
+              </div><span class="spb-pct">80%</span>
+            </div>
+            <div class="spb-item"><span>Network Security</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="75"></div>
+              </div><span class="spb-pct">75%</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-panel" data-panel="mobile">
+          <div class="sp-pills">
+            <span class="pill" data-lvl="82">Flutter</span>
+            <span class="pill" data-lvl="80">Dart</span>
+            <span class="pill" data-lvl="75">Cross-Platform</span>
+            <span class="pill" data-lvl="78">MySQL</span>
+            <span class="pill" data-lvl="72">Android / iOS</span>
+            <span class="pill" data-lvl="70">App Deployment</span>
+          </div>
+          <div class="sp-bars">
+            <div class="spb-item"><span>Flutter / Dart</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="82"></div>
+              </div><span class="spb-pct">82%</span>
+            </div>
+            <div class="spb-item"><span>Cross-Platform Dev</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="75"></div>
+              </div><span class="spb-pct">75%</span>
+            </div>
+            <div class="spb-item"><span>MySQL / Databases</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="80"></div>
+              </div><span class="spb-pct">80%</span>
+            </div>
+            <div class="spb-item"><span>App Architecture</span>
+              <div class="spb-track">
+                <div class="spb-fill" data-w="72"></div>
+              </div><span class="spb-pct">72%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Education -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-label">// 03. journey</div>
+      <h2 class="section-title reveal">Education &<br><span class="title-stroke">Milestones</span></h2>
+      <div class="exp-layout">
+        <div class="edu-block reveal">
+          <div class="eb-year">2023 — 2027</div>
+          <div class="eb-content">
+            <div class="eb-badge">🎓 Currently Enrolled</div>
+            <h3>BS Information Engineering Technology</h3>
+            <div class="eb-uni">The University of Lahore, Pakistan</div>
+            <div class="eb-cgpa">
+              <span class="cgpa-label">CGPA</span>
+              <span class="cgpa-value">4.0<span class="cgpa-max">/4.0</span></span>
+              <span class="cgpa-tag">PERFECT</span>
+            </div>
+            <p>Specialized in Web Development, Cloud Computing, AI, IoT, Cybersecurity, and Embedded Systems.
+              Consistently maintaining a perfect academic record while delivering high-impact technical projects that
+              push the boundaries of what students at this level are expected to accomplish.</p>
+            <div class="eb-semesters">
+              <div class="sem-bar">
+                <div class="sem-fill" style="width:60%"></div>
+                <span>Semester 6 of 8 — 75% Complete</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cert-timeline reveal">
+          <h3 class="ct-head">Certifications</h3>
+          <div class="ct-item">
+            <div class="ct-dot"></div>
+            <div class="ct-name">🤖 Generative AI Certification</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot"></div>
+            <div class="ct-name">☁ AWS Cloud Practitioner</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot"></div>
+            <div class="ct-name">🌐 Cisco NetAcad — Networking</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot"></div>
+            <div class="ct-name">🖥 WordPress Development</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot"></div>
+            <div class="ct-name">💼 Freelancing Essentials</div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot active"></div>
+            <div class="ct-name">💡 AI Connect Seminar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-label">// 04. projects</div>
+      <h2 class="section-title reveal">What I've<br><span class="title-stroke">Built</span></h2>
+      <div class="proj-grid">
+
+        <div class="proj-card featured reveal" data-num="01">
+          <div class="pc-tag">AI & Cloud — Featured</div>
+          <div class="pc-icon">🧠</div>
+          <h3>Smart Attendance System</h3>
+          <p>Full-stack AI system with <strong>facial recognition</strong>, <strong>speech synthesis</strong>, and
+            <strong>voice command</strong> interfaces. Built a 5-role administrative panel with liveness detection to
+            prevent photo spoofing, emotion analytics dashboard, and behavior tracking — all running on a Flask backend
+            with MySQL.</p>
+          <div class="pc-meta">
+            <div class="pcm-stat"><span>5</span> User Roles</div>
+            <div class="pcm-stat"><span>3</span> AI Models</div>
+            <div class="pcm-stat"><span>99%</span> Accuracy</div>
+          </div>
+          <div class="pc-stack">
+            <span>Computer Vision</span><span>NLP</span><span>Flask</span><span>MySQL</span><span>OpenCV</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-num="02">
+          <div class="pc-tag">Cloud / DevOps</div>
+          <div class="pc-icon">⚙</div>
+          <h3>AWS Cloud CI/CD Pipeline</h3>
+          <p>End-to-end DevOps pipeline: <strong>VS Code → GitHub → Jenkins → SonarQube → Docker → AWS EC2</strong>.
+            Automated testing, code quality gates, containerization, and scalable Linux server deployment. Zero-downtime
+            releases.</p>
+          <div class="pc-stack">
+            <span>AWS EC2</span><span>Docker</span><span>Jenkins</span><span>SonarQube</span><span>Linux</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-num="03">
+          <div class="pc-tag">IoT / Embedded</div>
+          <div class="pc-icon">🤖</div>
+          <h3>Human-Following Robot</h3>
+          <p>Autonomous robot built from scratch using <strong>Arduino Uno</strong> with IR & ultrasonic sensors,
+            Bluetooth module, LCD display, servo motors, and wheel encoders. Entirely written in <strong>bare-metal
+              C/C++</strong>. Tracks and follows humans in real time.</p>
+          <div class="pc-stack">
+            <span>Arduino</span><span>C/C++</span><span>Sensors</span><span>Bluetooth</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-num="04">
+          <div class="pc-tag">IoT / Cloud</div>
+          <div class="pc-icon">🅿</div>
+          <h3>Smart Parking Monitor</h3>
+          <p><strong>ESP32-powered</strong> IoT system with ultrasonic sensors for slot detection, connected to a
+            real-time cloud dashboard. Sends automated alerts on capacity changes. Deployed with persistent data logging
+            and visualization.</p>
+          <div class="pc-stack">
+            <span>ESP32</span><span>AWS Cloud</span><span>IoT</span><span>Real-Time</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-num="05">
+          <div class="pc-tag">Mobile / Game</div>
+          <div class="pc-icon">🎮</div>
+          <h3>COVI KILL — Awareness Game</h3>
+          <p>Cross-platform Flutter/Dart game with a <strong>3D avatar system</strong> and COVID-19 awareness mechanics.
+            Deployed simultaneously on <strong>Android, iOS, Web, Windows, macOS, and Linux</strong> from a single
+            codebase. Gamification of public health messaging.</p>
+          <div class="pc-stack">
+            <span>Flutter</span><span>Dart</span><span>3D Graphics</span><span>6 Platforms</span>
+          </div>
+        </div>
+
+        <div class="proj-card featured reveal" data-num="06">
+          <div class="pc-tag">Full Stack — Agriculture</div>
+          <div class="pc-icon">🌾</div>
+          <h3>Organic Agriculture Portal</h3>
+          <p>Complete e-commerce marketplace for organic farmers. <strong>MySQL + Flask + PHP + REST APIs</strong> with
+            secure role-based access control, real-time inventory updates, payment integration, and a responsive
+            storefront. From concept to production in one semester.</p>
+          <div class="pc-meta">
+            <div class="pcm-stat"><span>REST</span> APIs</div>
+            <div class="pcm-stat"><span>RBAC</span> Auth</div>
+            <div class="pcm-stat"><span>Full</span> E-Commerce</div>
+          </div>
+          <div class="pc-stack">
+            <span>Flask</span><span>PHP</span><span>MySQL</span><span>REST API</span><span>E-Commerce</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-num="07">
+          <div class="pc-tag">AI / Cybersecurity</div>
+          <div class="pc-icon">🛡</div>
+          <h3>AI Threat Detection System</h3>
+          <p>ML-powered phishing and malware detection engine with automated incident response workflows. Trained on
+            curated datasets with feature engineering for URL analysis, behavioral heuristics, and real-time
+            classification API.</p>
+          <div class="pc-stack">
+            <span>ML / Python</span><span>Threat Intel</span><span>API</span><span>Automation</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-num="08">
+          <div class="pc-tag">Networking / Systems</div>
+          <div class="pc-icon">🔗</div>
+          <h3>Cisco Network Design</h3>
+          <p>Designed and simulated enterprise-grade network topology using <strong>Cisco Packet Tracer</strong> with
+            VLANs, routing protocols (OSPF, RIP), ACLs, NAT/PAT, and DHCP configuration. Documented with full topology
+            diagrams.</p>
+          <div class="pc-stack">
+            <span>Cisco</span><span>VLAN</span><span>OSPF</span><span>Linux</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-label">// 05. contact</div>
+      <h2 class="section-title reveal">Let's Build<br><span class="title-stroke">Something</span></h2>
+      <div class="contact-wrap">
+        <div class="contact-left reveal">
+          <p>I'm actively seeking internships, collaborations, and challenging projects. Whether you need an AI
+            engineer, a full-stack developer, or someone who can do both — I'm your person. Let's talk.</p>
+          <div class="contact-items">
+            <a href="mailto:shehar.bano.2130@gmail.com" class="ci-link">
+              <div class="ci-icon-box">✉</div>
+              <div class="ci-details">
+                <span class="ci-label">Email</span>
+                <span class="ci-val">shehar.bano.2130@gmail.com</span>
+              </div>
+              <span class="ci-arrow">→</span>
+            </a>
+            <a href="tel:+923045191914" class="ci-link">
+              <div class="ci-icon-box">📞</div>
+              <div class="ci-details">
+                <span class="ci-label">Phone</span>
+                <span class="ci-val">+92 304 5191914</span>
+              </div>
+              <span class="ci-arrow">→</span>
+            </a>
+            <div class="ci-link no-hover">
+              <div class="ci-icon-box">📍</div>
+              <div class="ci-details">
+                <span class="ci-label">Location</span>
+                <span class="ci-val">Lahore, Pakistan</span>
+              </div>
+            </div>
+          </div>
+          <div class="availability-badge">
+            <span class="ab-dot"></span>
+            <span>Available for Internships & Projects</span>
+          </div>
+        </div>
+        <div class="contact-right reveal">
+          <div class="contact-art">
+            <div class="ca-line">const hire = (engineer) =&gt; {</div>
+            <div class="ca-line ca-indent">if (engineer.skills.includes(<span class="ca-str">'all'</span>)) {</div>
+            <div class="ca-line ca-indent2">return <span class="ca-str">'shehar.bano'</span>;</div>
+            <div class="ca-line ca-indent">}</div>
+            <div class="ca-line">};</div>
+            <div class="ca-line ca-blank"></div>
+            <div class="ca-line">hire({</div>
+            <div class="ca-line ca-indent">skills: [<span class="ca-str">'AI'</span>, <span
+                class="ca-str">'Cloud'</span>,</div>
+            <div class="ca-line ca-indent2"><span class="ca-str">'IoT'</span>, <span class="ca-str">'FullStack'</span>,
+            </div>
+            <div class="ca-line ca-indent2"><span class="ca-str">'Cyber'</span>, <span class="ca-str">'all'</span>],
+            </div>
+            <div class="ca-line ca-indent">cgpa: <span class="ca-num">4.0</span>,</div>
+            <div class="ca-line ca-indent">attitude: <span class="ca-str">'unstoppable'</span></div>
+            <div class="ca-line">});</div>
+            <div class="ca-line ca-blank"></div>
+            <div class="ca-line ca-comment">// Output: "shehar.bano" ✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-name">Shehar Bano</div>
+      <div class="footer-meta">Designed & Built with ♥ in Lahore, Pakistan · 2026</div>
+      <div class="footer-copy">// All systems go.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
