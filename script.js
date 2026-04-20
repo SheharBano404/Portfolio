@@ -192,29 +192,58 @@ const countInterval = setInterval(() => {
   if (countVal >= countTarget) clearInterval(countInterval);
 }, 100);
 
-// Place items in a circle
-techData.forEach((tech, i) => {
-  const angle = (i / techData.length) * 2 * Math.PI - Math.PI / 2;
-  const radius = 130; // px from center of ring (ring is 320px, center at 160)
-  const x = 160 + radius * Math.cos(angle);
-  const y = 160 + radius * Math.sin(angle);
+function buildRing() {
+  // Remove old tech items
+  ring.querySelectorAll('.tech-item').forEach(el => el.remove());
 
-  const el = document.createElement('div');
-  el.className = 'tech-item';
-  el.style.left = x + 'px';
-  el.style.top = y + 'px';
-  el.innerHTML = `<span class="ti-icon">${tech.icon}</span>${tech.name}`;
+  // Dynamically get the ring's rendered size for responsive radius
+  const ringSize = ring.offsetWidth || 320;
+  const center = ringSize / 2;
+  const radius = center * 0.82; // 82% of radius keeps items just inside border
 
-  el.addEventListener('mouseenter', () => {
-    ripTitle.textContent = tech.icon + ' ' + tech.name;
-    ripDesc.textContent = tech.desc;
+  techData.forEach((tech, i) => {
+    const angle = (i / techData.length) * 2 * Math.PI - Math.PI / 2;
+    const x = center + radius * Math.cos(angle);
+    const y = center + radius * Math.sin(angle);
+
+    const el = document.createElement('div');
+    el.className = 'tech-item';
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+
+    // Scale item size relative to ring
+    const itemSize = Math.max(44, Math.round(ringSize * 0.17));
+    el.style.width = itemSize + 'px';
+    el.style.height = itemSize + 'px';
+    el.style.fontSize = Math.max(0.42, ringSize * 0.001 * 0.55) + 'rem';
+
+    el.innerHTML = `<span class="ti-icon" style="font-size:${Math.max(0.85, ringSize * 0.003)}rem">${tech.icon}</span>${tech.name}`;
+
+    el.addEventListener('mouseenter', () => {
+      ripTitle.textContent = tech.icon + ' ' + tech.name;
+      ripDesc.textContent = tech.desc;
+    });
+    el.addEventListener('mouseleave', () => {
+      ripTitle.textContent = 'Hover a tech';
+      ripDesc.textContent = 'to see details';
+    });
+    // Touch support
+    el.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      ripTitle.textContent = tech.icon + ' ' + tech.name;
+      ripDesc.textContent = tech.desc;
+    }, { passive: false });
+
+    ring.appendChild(el);
   });
-  el.addEventListener('mouseleave', () => {
-    ripTitle.textContent = 'Hover a tech';
-    ripDesc.textContent = 'to see details';
-  });
+}
 
-  ring.appendChild(el);
+// Build on load, rebuild on resize
+buildRing();
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(buildRing, 200);
 });
 
 // ---- HERO STATS COUNTER ----
@@ -314,19 +343,22 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ---- PROJECT CARD MAGNETIC EFFECT ----
-document.querySelectorAll('.proj-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    card.style.transform = `translateY(-8px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg)`;
+// ---- PROJECT CARD MAGNETIC EFFECT (desktop only) ----
+const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+if (!isTouch) {
+  document.querySelectorAll('.proj-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `translateY(-8px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'all 0.4s';
+    });
   });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-    card.style.transition = 'all 0.4s';
-  });
-});
+}
 
 // ---- GLITCH EFFECT ON NAV LOGO ----
 const navLogo = document.querySelector('.nav-logo');
