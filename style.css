@@ -2049,6 +2049,7 @@
      /* Ring gets compact */
      .hero-right {
        max-width: 280px;
+       margin-left: 80px;
      }
    
      .tech-stack-ring {
